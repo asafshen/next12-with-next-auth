@@ -24,16 +24,17 @@ export default () => {
 
   return (
     <div>
-      <h1>Next12 With NextAuth</h1>
+      <h3>Next12 With NextAuth</h3>
+      <h1>Home</h1>
       <div>{session && <p>Signed in as {session.user.email}</p>}</div>
-			<div>
-			<button
+      <div>
+        <button
           className="bg-none border-gray-300 border py-2 px-6 rounded-md mb-2"
           onClick={() => signOut()}
         >
           Sign out
         </button>
-			</div>
+      </div>
     </div>
   );
 };

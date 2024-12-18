@@ -19,17 +19,16 @@ export const getServerSideProps = async ({ req, res, locale }) => {
 export default function Page({ session }) {
   return (
     <div>
-      <h1>Next12 With NextAuth</h1>
-      <div>Page 1</div>
+      <h3>Next12 With NextAuth</h3>
+      <h1>Page 1</h1>
       <div>
         <ul>
-        {Object.entries(session).map(([key, value]) => (
-          <li key={key}>
-            <strong>{key}</strong>: {JSON.stringify(value, null, 2)}
-          </li>
-        ))}
+          {Object.entries(session).map(([key, value]) => (
+            <li key={key}>
+              <strong>{key}</strong>: {JSON.stringify(value, null, 2)}
+            </li>
+          ))}
         </ul>
-        
       </div>
     </div>
   );
