@@ -6,6 +6,11 @@ import { NextRequest, NextResponse } from 'next/server';
 const DESCOPE_PROJECT_ID = process.env.DESCOPE_PROJECT_ID;
 const DESCOPE_ACCESS_KEY = process.env.DESCOPE_ACCESS_KEY;
 
+
+console.log('0 - DESCOPE_PROJECT_ID: ', DESCOPE_PROJECT_ID);
+// print the first and last 3 characters of the DESCOPE_ACCESS_KEY
+console.log('0 - DESCOPE_ACCESS_KEY: ', DESCOPE_ACCESS_KEY.slice(0, 3) + '...' + DESCOPE_ACCESS_KEY.slice(-3));
+
 export const authOptions: NextAuthOptions = {
   providers: [
     {
