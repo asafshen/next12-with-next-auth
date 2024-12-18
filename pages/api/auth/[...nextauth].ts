@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // const DESCOPE_PROJECT_ID = 'P2My9KRakUMj40L8KOBjAJLVWhWC';
 const DESCOPE_PROJECT_ID = process.env.DESCOPE_PROJECT_ID;
+const DESCOPE_ACCESS_KEY = process.env.DESCOPE_ACCESS_KEY;
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -17,7 +18,7 @@ export const authOptions: NextAuthOptions = {
       },
       idToken: true,
       clientId: DESCOPE_PROJECT_ID,
-      clientSecret: '',
+      clientSecret: DESCOPE_ACCESS_KEY,
       checks: ['pkce', 'state'],
       profile(profile, tokens) {
         return {
