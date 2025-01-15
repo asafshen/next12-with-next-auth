@@ -2,8 +2,9 @@ import { getSession } from "next-auth/react";
 import React from "react";
 
 export const getServerSideProps = async ({ req, res, locale }) => {
-  const session = await getSession({ req });
-  const user = session?.user;
+  let session = await getSession({ req });
+
+  let user = session?.user;
   if (!user) {
     console.log("Page-2, No user, redirecting to login");
     return {
@@ -13,7 +14,27 @@ export const getServerSideProps = async ({ req, res, locale }) => {
       },
     };
   }
-  return { props: { session } };
+
+  console.log("Page-2, User found, sleeping for 1 second");
+  // sleep for 1 seconds
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  // get the session again
+  session = await getSession({ req });
+  user = session?.user;
+
+  if (!user) {
+    console.log("Page-2, No user at the 2nd time, redirecting to login");
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/api/auth/signin",
+      },
+    };
+  }
+
+
+  return { props: { session: session } };
 };
 
 export default function Page({ session }) {
